@@ -6,15 +6,19 @@ templ Base(title string, body templ.Component) {
 		<head>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-			<link rel="stylesheet" href="./static/css/output.css"/>
+			<link rel="stylesheet" href="/static/css/output.css"/>
+			<script defer src="/static/js/alpine-intersect.min.js"></script>
+			<script defer src="/static/js/alpine.min.js"></script>
 			<title>{ title }</title>
 		</head>
-		<body>
+		<body class="font-sans">
 			<header></header>
 			<main>
 				@body
 			</main>
-			<footer></footer>
+			<footer class="p-5 grid place-items-center fixed bottom-0 left-0 right-0" x-data="{date: new Date(), shown: false}" x-intersect="shown = true">
+				<p class="capitalize text-sm text-stone-500" x-show="shown" x-transition.duration.1000ms x-cloak>powered by <span class="font-black text-go">GO</span> <span x-text="date.getFullYear()"></span></p>
+			</footer>
 		</body>
 	</html>
 }
