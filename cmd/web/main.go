@@ -1,13 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"io/fs"
 	"log"
 	"net/http"
 	"os"
 
 	grocerybuddy "github.com/raffy-io/02grocerybuddy"
+	"github.com/raffy-io/02grocerybuddy/internal/handlers"
 )
 
 
@@ -16,9 +16,7 @@ func main() {
 	// routes
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/",func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w,"<h1>Hello World</h1>")
-	})
+	mux.HandleFunc("/",handlers.GetHome)
 
 
 	// static assets
